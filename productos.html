@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos Ecobook</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="img/imagen1.jpeg" alt="Logo Ecobook">
+    </div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<section class="banner-productos">
+    
+    <div class="banner-contenido">
+        <h1>Productos Ecobook</h1>
+        <p>Diseños ecológicos pensados para estudiantes conscientes.</p>
+    </div>
+</section>
+
+<section class="seccion-productos">
+
+<div class="productos-container">
+
+<div class="producto-card">
+<h2 class="producto-titulo">Libreta Ecológica</h2>
+<p class="producto-precio">Precio: $40</p>
+<a class="btn-detalles" onclick="mostrar('libreta')">Ver detalles</a>
+</div>
+
+<div class="producto-card">
+<h2 class="producto-titulo">Compartimiento Reciclado</h2>
+<p class="producto-precio">Precio: $12</p>
+<a class="btn-detalles" onclick="mostrar('compartimento')">Ver detalles</a>
+</div>
+
+<div class="producto-card">
+<h2 class="producto-titulo">Lápiz Ecológico</h2>
+<p class="producto-precio">Precio: $12</p>
+<a class="btn-detalles" onclick="mostrar('lapiz')">Ver detalles</a>
+</div>
+
+<div class="producto-card">
+<h2 class="producto-titulo">Separador Ecológico</h2>
+<p class="producto-precio">Precio: $15</p>
+<a class="btn-detalles" onclick="mostrar('separador')">Ver detalles</a>
+</div>
+
+<div class="producto-card">
+<h2 class="producto-titulo">Vela Aromática</h2>
+<p class="producto-precio">Precio: $50</p>
+<a class="btn-detalles" onclick="mostrar('vela')">Ver detalles</a>
+</div>
+
+<div class="producto-card">
+<h2 class="producto-titulo">Kit Básico Ecobook</h2>
+<p class="producto-precio">Precio: $100</p>
+<a class="btn-detalles" onclick="mostrar('kit')">Ver detalles</a>
+</div>
+
+</div>
+</section>
+
+<div id="libreta" class="pagina-detalle">
+<h2>Libreta ecológica</h2>
+<hr>
+<img src="img/libre.jpeg" alt="libreta ecologica">
+<p>Estar hecha con materiales que ayudan a reducir el desperdicio escolar.</p>
+<p>Formar parte de una propuesta de producto innovador y sustentable.</p>
+<p>Tener como objetivo fomentar la conciencia ambiental en los estudiantes.</p>
+<p>Ser un producto pensado para tener precio accesible y generar ganancia sin dejar de ser ecológico.</p>
+<a class="btn-regresar" onclick="regresar()">Regresar</a>
+</div>
+
+<div id="compartimento" class="pagina-detalle">
+<h2>Compartimento ecológico</h2>
+<hr>
+<img src="img/compar.jpeg" alt="compartimento">
+<p>Es un elemento funcional e innovador incluido en la propuesta del proyecto.</p>
+<p>Fue pensado para complementar la libreta ecológica y hacerla más práctica.</p>
+<p>Forma parte de la intención de ofrecer productos responsables con el medio ambiente.</p>
+<a class="btn-regresar" onclick="regresar()">Regresar</a>
+</div>
+
+<div id="lapiz" class="pagina-detalle">
+<h2>Lápiz ecológico</h2>
+<hr>
+<img src="img/lapiz.jpeg" alt="lápiz">
+<p>Es un producto funcional y responsable con el medio ambiente.</p>
+<p>Forma parte de la propuesta innovadora del proyecto.</p>
+<p>Contribuye a fomentar la conciencia ambiental dentro del entorno escolar.</p>
+<a class="btn-regresar" onclick="regresar()">Regresar</a>
+</div>
+
+<div id="separador" class="pagina-detalle">
+<h2>Separador ecológico</h2>
+<hr>
+<img src="img/separ.jpeg" alt="separador">
+<p>Es un producto funcional y responsable con el medio ambiente.</p>
+<p>Forma parte de la propuesta innovadora del proyecto.</p>
+<p>Contribuye a fomentar la conciencia ecológica dentro del entorno escolar.</p>
+<a class="btn-regresar" onclick="regresar()">Regresar</a>
+</div>
+
+<div id="vela" class="pagina-detalle">
+<h2>Vela aromática</h2>
+<hr>
+<img src="img/vela.jpeg" alt="vela">
+<p>Es un producto funcional, atractivo y responsable con el medio ambiente.</p>
+<p>Forma parte de la propuesta innovadora del proyecto.</p>
+<p>Contribuye a fomentar una cultura ecológica dentro del entorno escolar.</p>
+<a class="btn-regresar" onclick="regresar()">Regresar</a>
+</div>
+
+<div id="kit" class="pagina-detalle">
+<h2> Kit básico Ecobook</h2>
+<hr>
+<img src="img/kit.jpeg" alt="kit">
+<ul>
+<li>Libreta ecológica.</li>
+<li>Compartimiento reciclado.</li>
+<li>Lápiz ecológico.</li>
+<li>Separador ecológico.</li>
+<li>Vela aromática sustentable.</li>
+</ul>
+<p>Todos los elementos fueron seleccionados para ofrecer artículos funcionales, atractivos y responsables con el medio ambiente.</p>
+<a class="btn-regresar" onclick="regresar()">Regresar</a>
+</div>
+
+<script>
+function mostrar(id){
+    document.querySelector('.productos-container').style.display='none';
+    document.querySelector('h1').style.display='none';
+    document.getElementById(id).style.display='block';
+}
+
+function regresar(){
+    document.querySelectorAll('.pagina-detalle').forEach(p=>p.style.display='none');
+    document.querySelector('.productos-container').style.display='grid';
+    document.querySelector('h1').style.display='block';
+}
+</script>
+ <footer>
+        <p>© 2026 Ecobook BJLB | Productos</p>
+    </footer>
+
+</body>
+</html>

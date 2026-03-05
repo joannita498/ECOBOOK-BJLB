@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto | Ecobook</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="img/imagen1.jpeg" alt="Logo Ecobook">
+    </div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+</header>
+
+<section class="contacto-hero">
+    <h1>Contacto</h1>
+    <p>Estamos listas para transformar tus ideas en diseño creativo y profesional.</p>
+</section>
+    <main>
+        <section id="inicio">
+            <h2>Sobre Nosotros</h2>
+            <p>Somos una microempresa creada por estudiantes con el propósito de ofrecer soluciones creativas y accesibles a otros estudiantes y pequeños emprendimientos, nuestro proyecto nace en el CBT No. 4 de Toluca como parte de nuestra formación académica en el área de informática y diseño.</p>
+            <br> 
+            <p> Nos especializamos en la creación de diseños únicos, modernos y personalizados que se adaptan a las necesidades de cada cliente, creemos que el diseño no solo debe verse bien, sino también comunicar ideas, transmitir identidad y generar impacto</p>
+        </section>
+
+        <section id="servicios">
+           
+            <div class="servicios-container">
+                <div class="servicio">
+                    <img src="img/equipo.jpeg" width="120" height="200" alt="Icono de logotipo">
+                    <h3>Equipo de Trabajo</h3>
+
+                    <p> Somos un equipo comprometido, creativo y responsable, enfocado en ofrecer soluciones innovadoras y de calidad, trabajando en conjunto para alcanzar nuestros objetivos. Integrado por:
+                    </p>
+
+            <div class="equipo">
+    <div class="integrante">~ Ramírez Martínez Joanna</div>
+    <div class="integrante">~ Reyes Calvillo Barbara Elizabeth</div>
+    <div class="integrante">~ Silva Valdez Lizeth</div>
+    <div class="integrante">~ Gaal Solis Naomi Richelle</div>
+    <div class="integrante">~ Romero Morales Brisa</div>
+    <div class="integrante">~ Gonzalez Albiter Brandon Alfonso</div>
+</div>
+                <div class="servicio">
+                    <img src="img/sitio.jpeg" width="500" height="120" alt="Icono de sitio web">
+                    <h3>Sitio Web</h3>
+                    <p>Sitio web funcional y atractivo para conectar con clientes.</p>
+                </div>
+                <div class="servicio">
+                    <img src="img/instagram.jpeg" width="129" height="200" alt="Icono de publicidad">
+                    <h3>Red Social</h3>
+                    <p>En @ECOBOOK_24_27 compartimos nuestros diseños y novedades, descubre cómo transformamos materiales reciclados </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>¿Tienes una idea en mente? Escríbenos y juntos la haremos realidad.</p>
+            <form id="form-contacto">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="mensaje">Mensaje/Descripción del proyecto:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section id="registros">
+            <h2>Registros de Proyectos</h2>
+            <div class="registros-resultado">
+                <button class="btn-limpiar" id="btn-eliminar-todos">Eliminar Todos los Registros</button>
+                <table id="tabla-registros">
+                    <thead>
+                        <tr>
+                            <th>N° Registro</th>
+                            <th>Fecha de Registro</th>
+                            <th>Nombre Completo</th>
+                            <th>Correo Electrónico</th>
+                            <th>Mensaje</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Ecobook BJLB | Contacto</p>
+        <P> Telefono: +52 722 805 8572</P>
+    </footer>
+
+    <script>
+const KEY = "registrosContactoCreaplus";
+const tabla = document.getElementById("cuerpo-tabla");
+const btnEliminarTodos = document.getElementById("btn-eliminar-todos");
+const form = document.getElementById("form-contacto");
+
+const obtenerRegistros = () => JSON.parse(localStorage.getItem(KEY)) || [];
+const guardarRegistros = (datos) => localStorage.setItem(KEY, JSON.stringify(datos));
+
+function mostrarRegistros() {
+    const registros = obtenerRegistros();
+    tabla.innerHTML = "";
+
+    if (!registros.length) {
+        tabla.innerHTML = `<tr><td colspan="6" style="text-align:center;">No hay registros aún.</td></tr>`;
+        btnEliminarTodos.style.display = "none";
+        return;
+    }
+
+    btnEliminarTodos.style.display = "block";
+
+    registros.forEach((r, i) => {
+        tabla.innerHTML += `
+        <tr>
+            <td>${i + 1}</td>
+            <td>${r.fecha}</td>
+            <td>${r.nombre}</td>
+            <td>${r.correo}</td>
+            <td>${r.mensaje}</td>
+            <td><button onclick="eliminar(${i})" class="btn-eliminar">Eliminar</button></td>
+        </tr>`;
+    });
+}
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const nuevo = {
+        nombre: nombre.value,
+        correo: correo.value,
+        mensaje: mensaje.value,
+        fecha: new Date().toLocaleString()
+    };
+
+    const registros = obtenerRegistros();
+    registros.push(nuevo);
+    guardarRegistros(registros);
+
+    alert("Registro guardado correctamente");
+    form.reset();
+    mostrarRegistros();
+});
+
+function eliminar(i) {
+    if (!confirm("¿Eliminar este registro?")) return;
+    const registros = obtenerRegistros();
+    registros.splice(i, 1);
+    guardarRegistros(registros);
+    mostrarRegistros();
+}
+
+btnEliminarTodos.addEventListener("click", () => {
+    if (!confirm("¿Eliminar TODOS los registros?")) return;
+    localStorage.removeItem(KEY);
+    mostrarRegistros();
+});
+
+mostrarRegistros();
+</script>
+</body>
+</html>
