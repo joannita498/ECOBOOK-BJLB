@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User Login</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="acceso-body">
+
+<div class="acceso-login-container">
+    <div class="acceso-title">
+        USER LOGIN
+    </div>
+    <div class="acceso-input-box">
+
+        <div class="acceso-icon">
+            👤
+        </div>
+
+        <input
+            type="text"
+            id="usuario"
+            placeholder="Username"
+        >
+
+    </div>
+
+    <div class="acceso-input-box">
+
+        <div class="acceso-icon">
+            🔒
+        </div>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+    </div>
+
+    <button class="acceso-button" onclick="login()">
+        LOGIN
+    </button>
+
+    <div class="acceso-mensaje" id="mensaje"></div>
+    <div class="acceso-intentos" id="intentos">
+        Intentos restantes: 3
+    </div>
+
+</div>
+
+<audio id="audioLogin">
+
+    <source src="audios/audio2.mpeg" type="audio/mpeg">
+
+</audio>
+<script src="Scripts/acceso.js"></script>
+</body>
+</html>
